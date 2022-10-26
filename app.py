@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import select
-import sqlite3
 
 # Clase Flask
 app = Flask(__name__)
@@ -23,24 +22,20 @@ class Animal(db.Model):
     audio_video = db.Column(db.String(200))
     url_imagen = db.Column(db.String(200))
 
-# index principal
-
-
-@app.route('/')
-def home():
-    animales = []
-    return render_template('animal_1.html', animales=animales)
-
 # index para ingresar datos a la base de datos
 
 
 @app.route('/crear-animal', methods=['POST'])
 def crear():
-    animal = Animal(nombre=request.form['nombre'], nombre_cientifico=request.form['nombre_cientifico'], habitat=request.form['habitat'],
-                    dato_curioso=request.form['dato_curioso'], descripcion=request.form['descripcion'], audio_video=request.form['audio_video'])
+    animal = Animal(nombre=request.form['nombre'], 
+                    nombre_cientifico=request.form['nombre_cientifico'],   
+                    habitat=request.form['habitat'],
+                    dato_curioso=request.form['dato_curioso'], 
+                    descripcion=request.form['descripcion'], 
+                    audio_video=request.form['audio_video']),
     db.session.add(animal)
     db.session.commit()
-    return redirect(url_for('home'))
+    return render_template('agregar.html')
 
 # index para visualizar el animal que el cliente desee
 
@@ -50,20 +45,13 @@ def animal(id):
     id = int(id)
     ver = Animal.query.all()
     animal = ver[id-1]
-    return render_template('/animal.html', animal=animal)
+    return render_template('/view-animal.html', animal=animal)
 
 
-@app.route('/prueba')
+@app.route('/')
 def prueba():
     return render_template('index.html')
 
 
 if __name__ == '__main__':
     app.run(debug=True)
-    # db.create_all()
-
-
-# Flask shell
-#from app import db
-# db.create_all()
-# exit()

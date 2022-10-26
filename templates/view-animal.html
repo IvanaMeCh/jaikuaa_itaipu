@@ -24,15 +24,25 @@
                     alt=""
                   />
                 </div>
-                <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-                  <div class="mt-6 min-w-0 flex-1 sm:block 2xl:hidden">
-                    <h1 class="truncate text-2xl font-bold text-gray-900">
-                      Carpincho
-                    </h1>
+              </div>
+              <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+                <div class="mt-6 min-w-0 flex-1 sm:block">
+                  <h1 class="truncate text-2xl font-bold text-gray-900 text-center">
+                    {{animal.nombre}}
+                  </h1>
+                </div>
+              </div>
+              <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+                <div class="mt-6 min-w-0 flex-1 sm:block">
+                  <div class="place-content-center">
+                    <img src="{{animal.url_imagen}}" width="560" height="315" alt="">
                   </div>
                 </div>
               </div>
+              
+              
               <!-- Description list -->
+              
               <div class="mx-auto mt-6 max-w-5xl px-4 sm:px-6 lg:px-8">
                 <dl class="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
                   <div class="sm:col-span-1">
@@ -40,13 +50,13 @@
                       Nombre científico:
                     </dt>
                     <dd class="mt-1 text-sm text-gray-900 italic">
-                      Carpinchus
+                      {{animal.nombre_cientifico}}
                     </dd>
                   </div>
 
                   <div class="sm:col-span-1">
                     <dt class="text-sm font-medium text-gray-500">Habitat</dt>
-                    <dd class="mt-1 text-sm text-gray-900">Pantano</dd>
+                    <dd class="mt-1 text-sm text-gray-900">{{animal.habitat}}</dd>
                   </div>
 
                   <div class="sm:col-span-1">
@@ -54,27 +64,18 @@
                       Dato curioso
                     </dt>
                     <dd class="mt-1 text-sm text-gray-900">
-                      Le gusta ser amigo de todos los animales
+                      {{animal.dato_curioso}}
                     </dd>
-                  </div>
-
-                  <div class="sm:col-span-2">
                     <dt class="text-sm font-medium text-gray-500">
                       Descripcion
                     </dt>
-                    <dd
-                      class="mt-1 max-w-prose space-y-5 text-sm text-gray-900"
-                    >
-                      <p>
-                        Et vivamus lorem pulvinar nascetur non. Pulvinar a sed
-                        platea rhoncus ac mauris amet. Urna, sem pretium sit
-                        pretium urna, senectus vitae. Scelerisque fermentum,
-                        cursus felis dui suspendisse velit pharetra. Augue et
-                        duis cursus maecenas eget quam lectus. Accumsan vitae
-                        nascetur pharetra rhoncus praesent dictum risus
-                        suspendisse.
-                      </p>
+                    <dd class="mt-1 text-sm text-gray-900">
+                      {{animal.descripcion}}
                     </dd>
+                  </div>
+                  <div class="sm:col-span-1">
+                    
+                    <iframe width="560" height="315" src="{{animal.audio_video}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                   </div>
                 </dl>
               </div>
